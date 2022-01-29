@@ -1,0 +1,59 @@
+/*
+картинки-заглушки
+https://via.placeholder.com/150x100
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.page {
+  min-height: 100%;
+}
+
+.page-body {
+  min-height: 100%;
+  font-size: 18px;
+  font-family: Geometria, Arial, Helvetica, sans-serif;
+  background-color: black;
+  color: #ccc;
+}
+
+.wrapper {
+  position: relative;
+  margin: 50px auto;
+  min-width: 400px;
+  width: 400px;
+  min-height: 400px;
+  outline: 5px groove blue;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  outline: 5px groove blue;
+  outline-offset: -5px;
+}
+
+.block {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: gray;
+  transition: border-radius 0.5s, background-color 0.5s;
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
