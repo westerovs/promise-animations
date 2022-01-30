@@ -1,6 +1,7 @@
-const block = document.querySelector('.block')
-let posX    = 0
-let posY    = 0
+const ghost = document.querySelector('.ghost')
+const count = document.querySelector('.count')
+let posX = 0
+let posY = 0
 
 const getPosition = (x = 0, y = 0) => {
   return `translate(${ x }px, ${ y }px)`
@@ -8,10 +9,10 @@ const getPosition = (x = 0, y = 0) => {
 
 const animation1 = () => new Promise((resolve) => {
   const timer = setInterval(() => {
-    block.style.transform = getPosition(posX)
-    block.innerHTML       = '1'
+    ghost.style.transform = getPosition(posX)
+    count.innerHTML       = '1'
     posX++
-    
+
     if (posX >= 300) {
       clearTimeout(timer)
       resolve()
@@ -21,10 +22,10 @@ const animation1 = () => new Promise((resolve) => {
 
 const animation2 = () => new Promise((resolve) => {
   const timer = setInterval(() => {
-    block.style.transform = getPosition(posX, posY)
-    block.innerHTML       = '2'
+    ghost.style.transform = getPosition(posX, posY)
+    count.innerHTML       = '2'
     posY++
-    
+
     if (posY >= 300) {
       clearTimeout(timer)
       resolve()
@@ -34,10 +35,10 @@ const animation2 = () => new Promise((resolve) => {
 
 const animation3 = () => new Promise((resolve) => {
   const timer = setInterval(() => {
-    block.style.transform = getPosition(posX, posY)
-    block.innerHTML       = '3'
+    ghost.style.transform = getPosition(posX, posY)
+    count.innerHTML       = '3'
     posX--
-    
+
     if (posX <= 0) {
       clearTimeout(timer)
       resolve()
@@ -45,12 +46,12 @@ const animation3 = () => new Promise((resolve) => {
   }, 0)
 })
 
-const animation4 = () => new Promise((resolve) => {
+const animation4 = () => new Promise((resolve, reject) => {
   const timer = setInterval(() => {
-    block.style.transform = getPosition(posX, posY)
-    block.innerHTML       = '4'
+    ghost.style.transform = getPosition(posX, posY)
+    count.innerHTML       = '4'
     posY--
-    
+
     if (posY <= 0) {
       clearTimeout(timer)
       resolve()
@@ -64,33 +65,40 @@ animation1()
   .then(() => animation4())
   .then(
     done => {
-      block.innerHTML             = '5'
-      block.style.backgroundColor = 'GREEN'
+      count.innerHTML             = '5'
+      ghost.style.backgroundColor = 'GREEN'
     },
     error => {
-      block.innerHTML             = 'ERROR'
-      block.style.backgroundColor = 'red'
+      count.innerHTML             = 'ERROR'
+      ghost.style.backgroundColor = 'red'
     })
   .finally(() => {
     setTimeout(() => {
-      block.style.borderRadius    = '50%'
-      block.style.backgroundColor = 'darkgreen'
-      block.style.border          = '5px solid green'
-      block.innerHTML             = 'FINAL'
+      ghost.style.borderRadius    = '50%'
+      ghost.style.backgroundColor = 'darkgreen'
+      ghost.style.border          = '5px solid green'
+      count.innerHTML             = 'FINAL'
     }, 0)
   })
 
 //
 // Promise.all([
-//   animation1,
-//   animation2,
-//   animation3,
-//   animation4,
-// ]).then(() => {
-//   console.log(promises)
-//   block.style.borderRadius    = '50%'
-//   block.style.backgroundColor = 'red'
-//   block.style.border          = '5px solid #00FFA9'
-//   block.innerHTML             = 'ALL'
-// })
-
+//   new Promise(resolve => {
+//     setTimeout(() => {
+//       console.log(1)
+//       resolve(1)
+//     }, 3000)
+//   }), // 1
+//   new Promise(resolve => {
+//     setTimeout(() => {
+//       console.log(2)
+//       resolve(2)
+//     }, 2000)
+//   }), // 2
+//   new Promise(resolve => {
+//     setTimeout(() => {
+//       console.log(3)
+//       resolve(3)
+//     }, 1000)
+//   })  // 3
+// ]).then(console.log);

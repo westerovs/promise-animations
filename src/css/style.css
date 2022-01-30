@@ -1,8 +1,3 @@
-/*
-картинки-заглушки
-https://via.placeholder.com/150x100
-*/
-
 *,
 ::before,
 ::after {
@@ -23,7 +18,13 @@ https://via.placeholder.com/150x100
   color: #ccc;
 }
 
-.wrapper {
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.game {
   position: relative;
   margin: 50px auto;
   min-width: 400px;
@@ -32,7 +33,7 @@ https://via.placeholder.com/150x100
   outline: 5px groove blue;
 }
 
-.wrapper::before {
+.game::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -44,16 +45,42 @@ https://via.placeholder.com/150x100
   outline-offset: -5px;
 }
 
-.block {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.ghost {
+  position: relative;
   width: 100px;
   height: 100px;
-  background: gray;
   transition: border-radius 0.5s, background-color 0.5s;
-  font-size: 25px;
-  font-weight: bold;
-  color: black;
+}
+
+.ghost img {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.count {
+  position: absolute;
+  font-size: 20px;
+  z-index: 1;
+  color: aliceblue;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
