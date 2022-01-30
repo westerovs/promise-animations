@@ -62,9 +62,14 @@ img {
 
 .count {
   position: absolute;
-  font-size: 20px;
+  top: -15px;
+  left: -15px;
+  font-size: 25px;
+  font-weight: bold;
   z-index: 1;
   color: aliceblue;
+  background: red;
+  padding: 3px 6px;
 }
 
 @keyframes pulse {

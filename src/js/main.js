@@ -81,24 +81,12 @@ animation1()
     }, 0)
   })
 
+
+// const animationsAll = [
+//   animation1(),
+//   animation2(),
+//   animation3(),
+//   animation4(),
+// ]
 //
-// Promise.all([
-//   new Promise(resolve => {
-//     setTimeout(() => {
-//       console.log(1)
-//       resolve(1)
-//     }, 3000)
-//   }), // 1
-//   new Promise(resolve => {
-//     setTimeout(() => {
-//       console.log(2)
-//       resolve(2)
-//     }, 2000)
-//   }), // 2
-//   new Promise(resolve => {
-//     setTimeout(() => {
-//       console.log(3)
-//       resolve(3)
-//     }, 1000)
-//   })  // 3
-// ]).then(console.log);
+// Promise.all(animationsAll).then(() => console.log('ALL'));
